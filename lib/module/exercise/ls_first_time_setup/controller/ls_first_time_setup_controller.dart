@@ -35,6 +35,10 @@ class LsFirstTimeSetupController extends State<LsFirstTimeSetupView>
 
     await Future.delayed(const Duration(seconds: 1));
     firstTimeSetup = await mainStorage.get("first_time_setup") ?? false;
+    if (firstTimeSetup!) {
+      Get.offAll(const LsFirstTimeSetupDashboardView());
+      return;
+    }
     /*
     1. Tambahkan statement if, untuk mengevaluasi nilai dari firstTimeSetup
     Gunakan kode ini: (sebelum setState((){})
@@ -66,6 +70,9 @@ class LsFirstTimeSetupController extends State<LsFirstTimeSetupView>
     Apakah kamu langsung di arahkan ke halaman dashboard?
     Jika ya, tasks ini selesai~
     */
+    await mainStorage.put("first_time_setup", true);
+    firstTimeSetup = await mainStorage.get("first_time_setup") ?? false;
+    Get.offAll(const LsFirstTimeSetupDashboardView());
   }
 
   delete() async {

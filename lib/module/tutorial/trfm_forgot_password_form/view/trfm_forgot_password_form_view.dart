@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:example/core.dart';
-import '../controller/trfm_forgot_password_form_controller.dart';
 
 class TrfmForgotPasswordFormView extends StatefulWidget {
   const TrfmForgotPasswordFormView({Key? key}) : super(key: key);
@@ -17,7 +16,12 @@ class TrfmForgotPasswordFormView extends StatefulWidget {
         child: Container(
           padding: const EdgeInsets.all(10.0),
           child: Column(
-            children: const [],
+            children: [
+              QImagePicker(
+                label: "label",
+                onChanged: (p0) {},
+              )
+            ],
           ),
         ),
       ),
@@ -25,5 +29,6 @@ class TrfmForgotPasswordFormView extends StatefulWidget {
   }
 
   @override
-  State<TrfmForgotPasswordFormView> createState() => TrfmForgotPasswordFormController();
+  State<TrfmForgotPasswordFormView> createState() =>
+      TrfmForgotPasswordFormController();
 }

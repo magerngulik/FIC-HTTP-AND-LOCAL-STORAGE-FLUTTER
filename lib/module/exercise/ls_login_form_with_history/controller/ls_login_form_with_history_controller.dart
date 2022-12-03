@@ -23,7 +23,11 @@ class LsLoginFormWithHistoryController extends State<LsLoginFormWithHistoryView>
   String password = "";
   bool ready = false;
 
-  doLogin() async {}
+  doLogin() async {
+    mainStorage.put("email", email);
+    mainStorage.put("password", password);
+    Navigator.pop(context);
+  }
 
   loadLocalStorage() async {
     /*
@@ -49,9 +53,15 @@ class LsLoginFormWithHistoryController extends State<LsLoginFormWithHistoryView>
 
     6. Lanjut point 7
     */
+    email = await mainStorage.get("email") ?? "";
+    password = await mainStorage.get("password") ?? "";
+    ready = true;
+    setState(() {});
   }
 
   saveToLocalStorage() async {
+    print("email : $email");
+    print("password : $password");
     /*  
     7. Function ini akan selalu dipanggil ketika ada perubahan
     pada email dan password. 
@@ -67,5 +77,7 @@ class LsLoginFormWithHistoryController extends State<LsLoginFormWithHistoryView>
 
     8. Nice, buka lagi View-nya lanjut ke point 9
     */
+    mainStorage.put("email", email);
+    mainStorage.put("password", password);
   }
 }

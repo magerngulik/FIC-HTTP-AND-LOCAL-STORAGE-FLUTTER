@@ -97,6 +97,17 @@ class HtProductCrudListController extends State<HtProductCrudListView>
     //! #############################
     //! Jangan ubah kode dibawah
     //! #############################
+
+    var id = item["id"];
+    var response = await Dio().delete(
+      options: Options(
+        headers: {
+          "Content-Type": "application/json",
+        },
+      ),
+      "${AppConfig.baseUrl}/products/$id",
+    );
+    print(response.statusCode);
     await loadProducts();
     hideLoading();
   }

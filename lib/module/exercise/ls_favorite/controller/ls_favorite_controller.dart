@@ -37,6 +37,11 @@ class LsFavoriteController extends State<LsFavoriteView>
 
     3. Lanjut ke point 4
     */
+    productList = mainStorage.get("products");
+
+    ready = true;
+    print(productList.first["favorite"]);
+    setState(() {});
   }
 
   addToFavorite(Map item) {
@@ -55,7 +60,11 @@ class LsFavoriteController extends State<LsFavoriteView>
     Jika muncul, coba hot-restart aplikasi-nya.
     Lalu buka kembali halaman ini, apakah product yang kamu favoritkan hilang?
     Jika tidak hilang, tasks ini selesai!
+
     */
+    item["favorite"] = !item["favorite"];
+    saveToLocalStorage();
+    setState(() {});
   }
 
   saveToLocalStorage() async {

@@ -18,7 +18,9 @@ class HtProductCrudFormView extends StatefulWidget {
   16. ok, bagus lanjut ke point 17
   buka HtProductCrudFormController
   */
+  final Map? item;
   const HtProductCrudFormView({
+    this.item,
     Key? key,
   }) : super(key: key);
 
@@ -47,7 +49,36 @@ class HtProductCrudFormView extends StatefulWidget {
           child: Container(
             padding: const EdgeInsets.all(20.0),
             child: Column(
-              children: const [
+              children: [
+                QImagePicker(
+                  label: "photo",
+                  value: controller.photo,
+                  onChanged: (p0) {
+                    controller.photo = p0;
+                  },
+                ),
+                QTextField(
+                  label: "Product Name",
+                  value: controller.productName,
+                  onChanged: (p0) {
+                    controller.productName = p0;
+                  },
+                ),
+                QNumberField(
+                  value: controller.price.toString(),
+                  label: "Price Name",
+                  onChanged: (p0) {
+                    controller.price = p0.toDouble();
+                  },
+                ),
+                QMemoField(
+                  value: controller.description,
+                  label: "Description",
+                  onChanged: (p0) {
+                    controller.description = p0;
+                  },
+                )
+
                 /*
                 TODO: --
                 2. buat variabel photo, productName dan price
@@ -64,13 +95,14 @@ class HtProductCrudFormView extends StatefulWidget {
                 label: photo 
                 value: null 
 
+
                 di dalam event onChanged, ambil value-nya
                 Tampung di variabel controller.photo
 
                 4. buat sebuah textfield,
                 ! snippet : q_textfield
                 atur property-nya:
-                label: Product Name
+                label: Product Name,
                 value: null 
 
                 di dalam event onChanged, ambil value-nya

@@ -35,9 +35,15 @@ class LsCustomerCrudController extends State<LsCustomerCrudView>
 
     2. Panggil setState setelah-nya!
     */
+    customerList = mainStorage.get("customers") ?? [];
+    setState(() {});
   }
 
   addCustomer(Map newCustomer) async {
+    customerList.add(newCustomer);
+    saveCustomerList();
+    setState(() {});
+
     /*
     3. Variabel map, berisi data yang di generate Faker
     Yuk, kita simpan data user ketika kita menekan tombol add
@@ -72,9 +78,16 @@ class LsCustomerCrudController extends State<LsCustomerCrudView>
 
     9. Panggil function saveCustomerList();
     */
+    customerList.remove(item);
+    setState(() {});
+    saveCustomerList();
   }
 
   edit(item) {
+    item["customer_name"] = faker.name.firstName();
+    setState(() {});
+    saveCustomerList();
+
     /*  
     7. Yuk kita update item yang dipilih dari list
     gunakan kode ini:

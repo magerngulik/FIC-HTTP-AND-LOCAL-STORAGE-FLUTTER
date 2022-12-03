@@ -37,6 +37,11 @@ class LsFavoriteView extends StatefulWidget {
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
                     var item = controller.productList[index];
+                    print("this item favorite ${item["favorite"]}");
+                    // if (item["favorite"] != true) {
+                    //   item["favorite"] = false;
+                    // }
+                    // print(item["favorite"]);
                     if (item["favorite"] != true) return Container();
                     return Card(
                       clipBehavior: Clip.antiAlias,

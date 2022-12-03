@@ -174,7 +174,9 @@ class _QImagePickerState extends State<QImagePicker> {
             child: FormField(
                 initialValue: false,
                 validator: (value) {
-                  return widget.validator!(imageUrl);
+                  return null;
+
+                  // return widget.validator!(imageUrl);
                 },
                 enabled: true,
                 builder: (FormFieldState<bool> field) {

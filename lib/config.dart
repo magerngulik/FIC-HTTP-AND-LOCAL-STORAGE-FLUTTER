@@ -1,7 +1,7 @@
 class AppConfig {
   //# CONFIG
-  static String yourName = "DenyOcr";
-  static String phoneNumber = "082146727433";
+  static String yourName = "M. Zulkarnaen";
+  static String phoneNumber = "081270326205";
   //# ---------------------------------------
   //# ---------------------------------------
 
@@ -9,5 +9,6 @@ class AppConfig {
     var storage = yourName.replaceAll(" ", "-").toLowerCase();
     storage = "$storage-$phoneNumber";
     return "http://capekngoding.com:8080/$storage/api";
+    //"http://capekngoding.com:8080/M.Zulkarnaen/api";
   }
 }

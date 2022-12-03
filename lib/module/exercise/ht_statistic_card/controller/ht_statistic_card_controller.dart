@@ -19,6 +19,8 @@ class HtStatisticCardController extends State<HtStatisticCardView>
     5. Klik tombol refresh, jika data pada statistic berubah,
     Kamu sudah berhasil menyelesaikan task ini
     */
+
+    loadProductCount();
     super.initState();
   }
 
@@ -46,6 +48,18 @@ class HtStatisticCardController extends State<HtStatisticCardView>
 
     3. Panggil setState setelah-nya
     */
+
+    var response = await Dio().get(
+      "${AppConfig.baseUrl}/products/action/count",
+      options: Options(
+        headers: {
+          "Content-Type": "application/json",
+        },
+      ),
+    );
+    Map obj = response.data;
+    productCount = obj["data_count"];
+    setState(() {});
   }
 
   refresh() async {

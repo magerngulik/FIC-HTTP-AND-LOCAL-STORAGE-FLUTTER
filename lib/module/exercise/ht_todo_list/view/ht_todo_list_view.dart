@@ -37,6 +37,10 @@ class HtTodoListView extends StatefulWidget {
                 itemCount: controller.todoList.length,
                 itemBuilder: (context, index) {
                   var item = controller.todoList[index];
+                  // if (item["done"] == null) {
+                  //   item["done"] = false;
+                  // }
+                  print(item);
                   return Row(
                     children: [
                       IconButton(
